@@ -10,14 +10,18 @@ import argparse
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 SECTIONS = (
+    'definition',
     'concept',
     'system',
     'evaluation',
     'result',
     'formula',
+    'proof',
+    'case',
     'exercise',
     'related work',
     'pattern',
+    'clarification',
 )
 
 

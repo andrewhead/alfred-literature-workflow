@@ -30,6 +30,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>2C50E294-A1DF-4F40-A1C9-E0B3B57F6814</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>70103666-0684-453D-B0CE-45CE8F66C235</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>2E348053-3D62-44C7-937F-BF415AC0EF23</key>
 		<array>
 			<dict>
@@ -46,6 +57,36 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>9A199DA0-9E54-49D1-8EA4-E8C41D1A7FBE</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy digest to clipboard</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>C118206A-4713-472F-A9E0-07A4E65744AF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>6617D590-6BF2-405C-BE50-40A2135072C6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2C50E294-A1DF-4F40-A1C9-E0B3B57F6814</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>788B6F68-8928-4C80-9184-54DF4FF262D1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C59111E1-6491-42B4-B1D6-46A105B4B6CA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -84,6 +125,17 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>2EA1FD14-7CE3-4C0C-8617-ACC6DA1DC3D7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>C118206A-4713-472F-A9E0-07A4E65744AF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9555D263-942B-4DEC-8837-3F88D36F4CFD</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -201,7 +253,7 @@ python config.py notesfile --value $NOTESFILE</string>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -215,7 +267,7 @@ python config.py notesfile --value $NOTESFILE</string>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>script</key>
-				<string>python papers.py "{query}"</string>
+				<string>python papers.py --query "{query}"</string>
 				<key>subtext</key>
 				<string>You are reading document {query}</string>
 				<key>title</key>
@@ -248,41 +300,6 @@ python config.py notesfile --value $NOTESFILE</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>2EA1FD14-7CE3-4C0C-8617-ACC6DA1DC3D7</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>lw</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>script</key>
-				<string>python note.py "{query}"</string>
-				<key>subtext</key>
-				<string>Save a note for a document.</string>
-				<key>title</key>
-				<string>Write note: &lt;PageNo&gt; &lt;Category&gt; &lt;Note...&gt;</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>19DF3F40-E356-4327-A189-FC8324DE92D7</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -341,6 +358,76 @@ echo $DOC</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>l</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>python note.py "{query}"</string>
+				<key>subtext</key>
+				<string>Save a note for a document.</string>
+				<key>title</key>
+				<string>Write note: &lt;PageNo&gt; &lt;Category&gt; &lt;Note...&gt;</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>19DF3F40-E356-4327-A189-FC8324DE92D7</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>ldig</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>python papers.py --query "{query}"</string>
+				<key>subtext</key>
+				<string>Summarize document {query}</string>
+				<key>title</key>
+				<string>Make a note digest for a document</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>647DADC2-9555-42EA-BA09-662AFADE04D6</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
@@ -362,7 +449,7 @@ echo $DOC</string>
 				<integer>102</integer>
 				<key>script</key>
 				<string>NOTESFILE=`python config.py notesfile`
-python digest.py $NOTESFILE "{query}"</string>
+python digest.py $NOTESFILE "{query}" --caps --dashes</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -370,41 +457,6 @@ python digest.py $NOTESFILE "{query}"</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>9A199DA0-9E54-49D1-8EA4-E8C41D1A7FBE</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>ldig</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>script</key>
-				<string>python papers.py "{query}"</string>
-				<key>subtext</key>
-				<string>Summarize document {query}</string>
-				<key>title</key>
-				<string>Make a note digest for a document</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>647DADC2-9555-42EA-BA09-662AFADE04D6</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -433,6 +485,142 @@ python digest.py $NOTESFILE "{query}"</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>NOTESFILE=`python config.py notesfile`
+python digest.py --caps $NOTESFILE "{query}" | pbcopy</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C118206A-4713-472F-A9E0-07A4E65744AF</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>110</integer>
+				<key>script</key>
+				<string>do shell script "pbpaste &gt; /tmp/note.txt"tell application "TextMate"	open "/tmp/note.txt"end tell</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>9555D263-942B-4DEC-8837-3F88D36F4CFD</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>tell application "iTerm"	activate	set term to (make new terminal)	tell term		set sess to (make new session at the end of sessions)		tell sess			exec command ("vim {query}")		end tell	end tellend tell</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>70103666-0684-453D-B0CE-45CE8F66C235</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ledit</string>
+				<key>subtext</key>
+				<string>Drop into vim to manually edit notes</string>
+				<key>text</key>
+				<string>Edit literature notes</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>6617D590-6BF2-405C-BE50-40A2135072C6</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python config.py notesfile</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2C50E294-A1DF-4F40-A1C9-E0B3B57F6814</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>plog</string>
+				<key>subtext</key>
+				<string>Review details of prelims preparation</string>
+				<key>text</key>
+				<string>Open Prelims Logistics</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>788B6F68-8928-4C80-9184-54DF4FF262D1</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>https://docs.google.com/document/d/1QetHpC2W-kQV3LFX8iWHVU0mttTeQPWh4uZvldTDpVY/edit</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>C59111E1-6491-42B4-B1D6-46A105B4B6CA</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -457,6 +645,11 @@ python digest.py $NOTESFILE "{query}"</string>
 		<dict>
 			<key>ypos</key>
 			<real>430</real>
+		</dict>
+		<key>2C50E294-A1DF-4F40-A1C9-E0B3B57F6814</key>
+		<dict>
+			<key>ypos</key>
+			<real>790</real>
 		</dict>
 		<key>2E348053-3D62-44C7-937F-BF415AC0EF23</key>
 		<dict>
@@ -483,6 +676,26 @@ python digest.py $NOTESFILE "{query}"</string>
 			<key>ypos</key>
 			<real>430</real>
 		</dict>
+		<key>6617D590-6BF2-405C-BE50-40A2135072C6</key>
+		<dict>
+			<key>ypos</key>
+			<real>790</real>
+		</dict>
+		<key>70103666-0684-453D-B0CE-45CE8F66C235</key>
+		<dict>
+			<key>ypos</key>
+			<real>790</real>
+		</dict>
+		<key>788B6F68-8928-4C80-9184-54DF4FF262D1</key>
+		<dict>
+			<key>ypos</key>
+			<real>910</real>
+		</dict>
+		<key>9555D263-942B-4DEC-8837-3F88D36F4CFD</key>
+		<dict>
+			<key>ypos</key>
+			<real>660</real>
+		</dict>
 		<key>9A199DA0-9E54-49D1-8EA4-E8C41D1A7FBE</key>
 		<dict>
 			<key>ypos</key>
@@ -493,6 +706,16 @@ python digest.py $NOTESFILE "{query}"</string>
 			<key>ypos</key>
 			<real>130</real>
 		</dict>
+		<key>C118206A-4713-472F-A9E0-07A4E65744AF</key>
+		<dict>
+			<key>ypos</key>
+			<real>660</real>
+		</dict>
+		<key>C59111E1-6491-42B4-B1D6-46A105B4B6CA</key>
+		<dict>
+			<key>ypos</key>
+			<real>910</real>
+		</dict>
 		<key>DEB3A9A2-0D99-46C7-94B9-E47657E90AC1</key>
 		<dict>
 			<key>ypos</key>
@@ -501,7 +724,7 @@ python digest.py $NOTESFILE "{query}"</string>
 		<key>ECDDA3EF-A64C-44CE-B465-9DE707D5C65B</key>
 		<dict>
 			<key>ypos</key>
-			<real>550</real>
+			<real>540</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

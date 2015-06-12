@@ -9,6 +9,7 @@ import config
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
+RECENT_COUNT = 10
 
 
 TITLES = (
@@ -44,7 +45,7 @@ TITLES = (
     "Multi-Touch Systems That I Have Known and Loved.",
     "GOMS.",
     "Measuring the User Experience: Collecting, Analyzing, and Presenting Usability Metrics.",
-    "Practical Guide to Controlled Experiments on the Web: Listen to Your Customers Not to the Hippo.",
+    "Practical Guide to Controlled Experiments on the Web: Listen to Your Customers Not to the Hippo.",  # noqa
     "TurKit: Human Computation Algorithms on Mechanical Turk.",
     "Everyone Can Write Better (and You Are No Exception).",
     "Evaluating User Interface Systems Research.",
@@ -53,7 +54,7 @@ TITLES = (
     "The Computer for the 21st Century.",
     "Building Interactive Systems: Principles for Human-Computer Interaction.",
     "What Do Prototypes Prototype.",
-    "Sketching User Experiences: Getting the Design Right and the Right Design: Getting the Design Right and the Right Design",
+    "Sketching User Experiences: Getting the Design Right and the Right Design: Getting the Design Right and the Right Design",  # noqa
     "A Morphological Analysis of the Design Space of Input Devices.",
     "Deep Shot: A Framework for Migrating Tasks across Devices Using Mobile Phone Cameras.",
     "Groupware and Social Dynamics: Eight Challenges for Developers.",
@@ -73,8 +74,8 @@ TITLES = (
     "Extending Fitts’ Law to Two-Dimensional Tasks.",
     "Human Computation: A Survey and Taxonomy of a Growing Field.",
     "On Distinguishing Epistemic from Pragmatic Action.",
-    "User Acceptance of Information Technology: System Characteristics, User Perceptions and Behavioral Impacts.",
-    "When the Wait Isn’t so Bad: The Interacting Effects of Website Delay, Familiarity, and Breadth.",
+    "User Acceptance of Information Technology: System Characteristics, User Perceptions and Behavioral Impacts.",  # noqa
+    "When the Wait Isn’t so Bad: The Interacting Effects of Website Delay, Familiarity, and Breadth.",  # noqa
     "A Survey of Software Learnability: Metrics, Methodologies and Guidelines.",
     "Zoetrope: Interacting with the Ephemeral Web.",
     "You’ve Been Warned: An Empirical Study of the Effectiveness of Web Browser Phishing Warnings.",
@@ -84,20 +85,20 @@ TITLES = (
     "The Psychology of Security.",
     "Generating Photo Manipulation Tutorials by Demonstration.",
     "Code Bubbles: A Working Set-Based Interface for Code Understanding and Maintenance.",
-    "Improving the Performance of Motor-Impaired Users with Automatically-Generated, Ability-Based Interfaces.",
+    "Improving the Performance of Motor-Impaired Users with Automatically-Generated, Ability-Based Interfaces.",  # noqa
     "Video Object Annotation, Navigation, and Composition.",
-    "The Bubble Cursor: Enhancing Target Acquisition by Dynamic Resizing of the Cursor’s Activation Area.",
+    "The Bubble Cursor: Enhancing Target Acquisition by Dynamic Resizing of the Cursor’s Activation Area.",  # noqa
     "Low-Cost Multi-Touch Sensing Through Frustrated Total Internal Reflection.",
     "Edit Wear and Read Wear.",
-    "Design Galleries: A General Approach to Setting Parameters for Computer Graphics and Animation.",
+    "Design Galleries: A General Approach to Setting Parameters for Computer Graphics and Animation.",  # noqa
     "Non-Invasive Interactive Visualization of Dynamic Architectural Environments.",
     "Revision: Automated Classification, Analysis and Redesign of Chart Images.",
-    "The ModelCraft Framework: Capturing Freehand Annotations and Edits to Facilitate the 3D Model Design Process Using a Digital Pen.",
+    "The ModelCraft Framework: Capturing Freehand Annotations and Edits to Facilitate the 3D Model Design Process Using a Digital Pen.",  # noqa
     "The Audio Notebook: Paper and Pen Interaction with Structured Speech.",
     "Using a Depth Camera As a Touch Sensor.",
     "Interacting with Paper on the DigitalDesk.",
     "Sikuli: Using GUI Screenshots for Search and Automation.",
-    "Combining Multiple Depth Cameras and Projectors for Interactions On, above and between Surfaces.",
+    "Combining Multiple Depth Cameras and Projectors for Interactions On, above and between Surfaces.",  # noqa
     "Depth-Sensing Video Cameras for 3D Tangible Tabletop Interaction.",
 )
 
@@ -123,17 +124,34 @@ def add_previous_titles(query, notesfile):
                 add(t)
 
 
+def add_recent_titles(notesfile):
+    with open(notesfile) as nfile:
+        titles = [l.split('\t')[0] for l in nfile.readlines()]
+        titles.reverse()
+        titles_uniq = []
+        [titles_uniq.append(t) for t in titles if t not in titles_uniq]
+        [add(t) for t in titles_uniq[:RECENT_COUNT]]
+
+
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description=
-        'Get prelim titles that match a certain name, ignoring case.')
-    parser.add_argument('query', help='partial title of work')
+    parser = argparse.ArgumentParser(
+        description='Get prelim titles that match a certain name, ignoring case.')
+    parser.add_argument('--query', help='partial title of work')
     args = parser.parse_args()
 
-    add_default_titles(args.query)
+    query = None if args.query is None or args.query == '' else args.query
+
+    if query is not None:
+        add_default_titles(query)
+
     notesfile = config.get_option('notesfile')
     if notesfile is not None:
-        add_previous_titles(args.query, notesfile)
-    if args.query not in added:
-        add(args.query)
+        if query is not None:
+            add_previous_titles(query, notesfile)
+        else:
+            add_recent_titles(notesfile)
+
+    if query is not None and query not in added:
+        add(query)
 
     print feedback
